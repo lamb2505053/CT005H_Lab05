@@ -25,8 +25,13 @@
         .card p{color:#555;margin-bottom:16px;line-height:1.6}
         .card img{width:100%;height:auto;border-radius:8px;display:block;margin:16px 0}
         .card .caption{font-size:0.95rem;color:#666;font-style:italic;margin:12px 0}
-        .video-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
-        .video-wrapper iframe{width:100%;height:100%;border:0;display:block}
+        .video-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;cursor:pointer;display:flex;align-items:center;justify-content:center}
+        .video-wrapper a{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-decoration:none}
+        .video-wrapper img{width:100%;height:100%;object-fit:cover;display:block}
+        .video-wrapper::after{content:'';position:absolute;width:80px;height:80px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:2}
+        .video-wrapper::before{content:'▶';position:absolute;font-size:35px;color:#FF0000;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
+        .video-wrapper:hover::after{background:rgba(255,255,255,1);transition:background 0.3s}
+        .video-wrapper:hover::before{transform:translate(-50%,-50%) scale(1.1);transition:transform 0.3s}
         .actions{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
         .btn{display:inline-block;padding:10px 20px;border-radius:6px;text-decoration:none;color:#fff;background:var(--primary);font-weight:600;font-size:0.95rem;transition:background 0.3s,transform 0.2s;border:none;cursor:pointer}
         .btn:hover{background:#1d4ed8;transform:scale(1.02)}
@@ -110,7 +115,9 @@
                     <h3>🎥 Video YouTube</h3>
                     <p>Video minh họa động về chủ đề công nghệ số. Nội dung được trình bày rõ ràng, dễ hiểu và hấp dẫn.</p>
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube-nocookie.com/embed/SzjoQXic4AM?si=7oUslxO4_GUCSnQX" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <a href="https://www.youtube.com/watch?v=SzjoQXic4AM" target="_blank" title="Xem video trên YouTube">
+                            <img src="https://img.youtube.com/vi/SzjoQXic4AM/maxresdefault.jpg" alt="Video thumbnail - Công nghệ số trong cuộc sống" loading="lazy">
+                        </a>
                     </div>
                     <p style="color:#666;font-size:0.95rem;margin-top:12px">Video giáo dục từ YouTube về ứng dụng công nghệ trong cuộc sống.</p>
                     <div class="actions">
