@@ -2,50 +2,138 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Infographic và Video</title>
+    <title>Giới thiệu cá nhân và sản phẩm</title>
     <style>
-        :root{--max-width:1100px;--gap:24px}
-        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:24px;background:#f7f7fb;color:#111}
-        .container{max-width:var(--max-width);margin:0 auto;display:grid;grid-template-columns:1fr 560px;gap:var(--gap);align-items:start}
-        @media (max-width:900px){.container{grid-template-columns:1fr;}}
-        .card{background:#fff;padding:16px;border-radius:10px;box-shadow:0 6px 20px rgba(20,20,50,0.06)}
-        .infographic img{width:100%;height:auto;border-radius:8px;display:block}
-        .infographic .caption{margin-top:8px;font-size:0.95rem;color:#555}
+        :root{--max-width:1200px;--gap:24px;--primary:#2563eb;--secondary:#6b7280;--light:#f7f7fb;--dark:#111}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--light);color:var(--dark)}
+        .header{background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#fff;padding:60px 24px;text-align:center}
+        .header h1{font-size:2.5rem;margin-bottom:12px}
+        .header .subtitle{font-size:1.2rem;opacity:0.95;margin-bottom:20px}
+        .header .social-links{display:flex;justify-content:center;gap:16px;margin-top:20px}
+        .header .social-links a{display:inline-block;width:40px;height:40px;background:rgba(255,255,255,0.2);border-radius:50%;line-height:40px;text-align:center;color:#fff;text-decoration:none;transition:background 0.3s}
+        .header .social-links a:hover{background:rgba(255,255,255,0.3)}
+        .container{max-width:var(--max-width);margin:0 auto;padding:40px 24px}
+        .section{margin-bottom:48px}
+        .section-title{font-size:2rem;margin-bottom:24px;color:var(--primary);border-bottom:3px solid var(--primary);padding-bottom:12px}
+        .intro-content{background:#fff;padding:32px;border-radius:10px;box-shadow:0 6px 20px rgba(20,20,50,0.06);line-height:1.8;font-size:1.1rem}
+        .intro-content p{margin-bottom:16px}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--gap)}
+        .card{background:#fff;padding:24px;border-radius:10px;box-shadow:0 6px 20px rgba(20,20,50,0.06);transition:transform 0.3s,box-shadow 0.3s}
+        .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(20,20,50,0.12)}
+        .card h3{font-size:1.5rem;margin-bottom:12px;color:var(--primary)}
+        .card p{color:#555;margin-bottom:16px;line-height:1.6}
+        .card img{width:100%;height:auto;border-radius:8px;display:block;margin:16px 0}
+        .card .caption{font-size:0.95rem;color:#666;font-style:italic;margin:12px 0}
         .video-wrapper{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}
         .video-wrapper iframe{width:100%;height:100%;border:0;display:block}
-        .actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
-        .btn{display:inline-block;padding:8px 12px;border-radius:6px;text-decoration:none;color:#fff;background:#2563eb;font-weight:600;font-size:0.95rem}
-        .btn.secondary{background:#6b7280}
+        .actions{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+        .btn{display:inline-block;padding:10px 20px;border-radius:6px;text-decoration:none;color:#fff;background:var(--primary);font-weight:600;font-size:0.95rem;transition:background 0.3s,transform 0.2s;border:none;cursor:pointer}
+        .btn:hover{background:#1d4ed8;transform:scale(1.02)}
+        .btn.secondary{background:var(--secondary)}
+        .btn.secondary:hover{background:#4b5563}
+        .btn.download{background:#059669}
+        .btn.download:hover{background:#047857}
+        .feature-list{list-style:none;margin:20px 0}
+        .feature-list li{padding:10px 0;padding-left:30px;position:relative;color:#444}
+        .feature-list li:before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:bold;font-size:1.2rem}
+        @media (max-width:900px){
+            .header h1{font-size:1.8rem}
+            .products-grid{grid-template-columns:1fr}
+            .section-title{font-size:1.5rem}
+        }
     </style>
 </head>
 <body>
+    <header class="header">
+        <h1>Giới thiệu Cá nhân</h1>
+        <p class="subtitle">Trang tổng hợp thông tin và các sản phẩm học tập</p>
+        <div class="social-links">
+            <a href="#" title="Facebook">f</a>
+            <a href="#" title="Email">✉</a>
+            <a href="#" title="LinkedIn">in</a>
+        </div>
+    </header>
+
     <main class="container">
-        <section class="card infographic">
-            <h2>Infographic</h2>
-            <!-- Thay 'infographic.jpg' bằng đường dẫn ảnh của bạn -->
-            <img src="Lab05_Ex2.1.png" alt="Infographic mô tả" loading="lazy">
-            <div class="caption">Infographic về lợi ích của công nghệ số trong học tập</div>
-            <div class="actions">
-                <a class="btn" href="Lab05_Ex2.1.png" download> Tải xuống </a>
-                <a class="btn secondary" href="#" onclick="openImage(event)"> Mở ảnh mới </a>
+        <!-- Phần giới thiệu cá nhân -->
+        <section class="section">
+            <h2 class="section-title">Về tôi</h2>
+            <div class="intro-content">
+                <p>Xin chào! Tôi là một sinh viên đam mê học tập và sáng tạo các nội dung giáo dục. Tôi luôn tìm cách để nâng cao kiến thức và kỹ năng của mình thông qua các dự án thực tế và sáng tạo.</p>
+                <p>Tôi chuyên tạo ra các tài liệu học tập bằng nhiều định dạng khác nhau bao gồm:</p>
+                <ul class="feature-list">
+                    <li>Tài liệu PDF chi tiết và toàn diện</li>
+                    <li>Infographic hấp dẫn và dễ hiểu</li>
+                    <li>Video hướng dẫn và giáo dục chất lượng cao</li>
+                    <li>Nội dung tương tác và hữu ích</li>
+                </ul>
+                <p>Mục tiêu của tôi là giúp người học có thể tiếp cận kiến thức một cách dễ dàng, thú vị và hiệu quả nhất.</p>
             </div>
         </section>
 
-        <section class="card">
-            <h2>Video YouTube</h2>
-            <div class="video-wrapper">
-                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/SzjoQXic4AM?si=7oUslxO4_GUCSnQX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- Phần sản phẩm -->
+        <section class="section">
+            <h2 class="section-title">Các sản phẩm đã tạo</h2>
+            <div class="products-grid">
+                <!-- Sản phẩm PDF -->
+                <div class="card">
+                    <h3>📄 Tài liệu PDF</h3>
+                    <p>Tài liệu chi tiết về chủ đề công nghệ số trong giáo dục. Bao gồm kiến thức lý thuyết cơ bản và các ứng dụng thực tế.</p>
+                    <p style="color:#666;font-size:0.95rem"><strong>Nội dung:</strong></p>
+                    <ul class="feature-list" style="font-size:0.95rem;margin:12px 0">
+                        <li>Giới thiệu về công nghệ số</li>
+                        <li>Lợi ích trong giáo dục</li>
+                        <li>Kỹ năng cần thiết</li>
+                        <li>Tương lai của học tập online</li>
+                    </ul>
+                    <div class="actions">
+                        <a class="btn download" href="Lab05_Ex1.2.pdf" download>⬇️ Tải xuống PDF</a>
+                        <a class="btn secondary" href="Lab05_Ex1.2.pdf" target="_blank">👁️ Xem trước</a>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm Infographic -->
+                <div class="card">
+                    <h3>📊 Infographic</h3>
+                    <p>Biểu đồ trực quan minh họa những lợi ích chính của công nghệ số trong quá trình học tập.</p>
+                    <img src="Lab05_Ex2.1.png" alt="Infographic mô tả lợi ích công nghệ số" loading="lazy">
+                    <div class="caption">Infographic về lợi ích của công nghệ số trong học tập</div>
+                    <div class="actions">
+                        <a class="btn download" href="Lab05_Ex2.1.png" download>⬇️ Tải ảnh</a>
+                        <a class="btn secondary" href="Lab05_Ex2.1.png" target="_blank">👁️ Xem ảnh lớn</a>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm Video -->
+                <div class="card">
+                    <h3>🎥 Video YouTube</h3>
+                    <p>Video minh họa động về chủ đề công nghệ số. Nội dung được trình bày rõ ràng, dễ hiểu và hấp dẫn.</p>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube-nocookie.com/embed/SzjoQXic4AM?si=7oUslxO4_GUCSnQX" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <p style="color:#666;font-size:0.95rem;margin-top:12px">Video giáo dục từ YouTube về ứng dụng công nghệ trong cuộc sống.</p>
+                    <div class="actions">
+                        <a class="btn secondary" href="https://www.youtube.com/watch?v=SzjoQXic4AM" target="_blank">📺 Xem trên YouTube</a>
+                    </div>
+                </div>
             </div>
-            <p style="margin-top:12px;color:#444">Video minh họa từ YouTube.</p>
+        </section>
+
+        <!-- Phần kết luận -->
+        <section class="section">
+            <h2 class="section-title">Liên hệ & Phản hồi</h2>
+            <div class="intro-content" style="text-align:center">
+                <p>Tôi rất mong nhận được ý kiến phản hồi của bạn về các sản phẩm này. Hãy liên hệ với tôi nếu bạn có bất kỳ câu hỏi hoặc gợi ý nào!</p>
+                <div class="actions" style="justify-content:center;margin-top:24px">
+                    <a class="btn" href="mailto:your.email@example.com">📧 Gửi email</a>
+                    <a class="btn secondary" href="#top">⬆️ Về đầu trang</a>
+                </div>
+            </div>
         </section>
     </main>
-
-    <script>
-        function openImage(e){
-            e.preventDefault();
-            const url = 'Lab05_Ex2.1.png'; // thay nếu cần
-            window.open(url, '_blank');
-        }
-    </script>
+    <footer style="background:#2d2d2d;color:#fff;padding:24px;text-align:center">
+        <p>&copy; 2026 | Trang giới thiệu cá nhân và sản phẩm học tập | Để bảo lưu tất cả quyền</p>
+    </footer>
 </body>
 </html>
